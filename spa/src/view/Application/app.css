@@ -1,30 +1,6 @@
-
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
+#root{
+  padding: 0px !important;
 }
-
-li {
-    float: left;
+.form-group{
+  margin-top: 60px;
 }
-
-li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-li a:hover {
-    background-color: #111;
-}
-
-.Logo {
-
-    float:right;
-}
-

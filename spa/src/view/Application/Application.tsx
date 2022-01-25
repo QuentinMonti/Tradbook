@@ -1,19 +1,15 @@
 import React from "react";
 import "./app.css";
+import { Form } from "./Components/Form";
+import { Nav } from "./Components/Nav";
 export interface Props {}
 
 export const Application: React.FunctionComponent<Props> = () => {
-  return <header>
-    <nav>
-      <ul>
-        <li><a href="">Login</a></li>
-        <li><a href="">Languages</a></li>
-        <li><a href="">Words</a></li>
-        <li><a href="">AddWords</a></li>
-        <li className="Logo"><a href="">TradBook</a></li>
-      </ul>
-      
-    </nav>
-  </header>
+  return (
+    <div>
+      <Nav></Nav>
+      <Form></Form>
+    </div>
+  );
 
 };
