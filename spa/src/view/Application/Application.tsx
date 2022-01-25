@@ -1,14 +1,12 @@
 import React from "react";
 import "./app.css";
-import { Form } from "./Components/Form";
-import { Nav } from "./Components/Nav";
+import { Login } from "../Login/Login";
 export interface Props {}
 
 export const Application: React.FunctionComponent<Props> = () => {
   return (
     <div>
-      <Nav></Nav>
-      <Form></Form>
+      <Login></Login>
     </div>
   );
 
