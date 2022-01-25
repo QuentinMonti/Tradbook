@@ -1,12 +1,10 @@
 import React from "react";
-import { Nav } from "../../Components/Nav";
 
 export interface Props {}
 
 export const Login: React.FunctionComponent<Props> = () => {
   return (
     <div>
-      <Nav></Nav>
       <div className="form-group container-md col-6">
         <form className="g-3">
           <div className="col-auto mb-3">

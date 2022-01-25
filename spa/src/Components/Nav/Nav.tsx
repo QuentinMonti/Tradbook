@@ -1,6 +1,8 @@
 import React from "react";
 
-export const Nav = () => {
+export interface Props {}
+
+export const Nav: React.FunctionComponent<Props> = () => {
   return (
     <header>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
