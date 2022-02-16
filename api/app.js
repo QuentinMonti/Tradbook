@@ -6,6 +6,7 @@ const app = express();
 const port = 8000;
 
 const JSON_FILE = './data/translations.json'
+const Word = require('./models/word')
 
 app.use(
   express.urlencoded({
@@ -37,7 +38,7 @@ app.get("/getWords", (req, res) => {
 // add new expressions to a json file
 app.post("/addWord", (req, res) => {
   let date = new Date()
-  let word = { "date": 1599552000, "en": "match", "fr": req.body.newWord };
+  let word = { "date": 1599552000, "en": "match", "fr": req.body.newWord, "description": req.body.description };
 
   fs.readFile(JSON_FILE, function (err, data) {
     var json = JSON.parse(data)
@@ -53,7 +54,7 @@ app.post("/addWord", (req, res) => {
 
 // add new expressions to a json file
 app.post("/addExpression", (req, res) => {
-  let word = { "date": 1599552000, "en": "match", "fr": req.body.newExpression };
+  let word = { "date": 1599552000, "en": "match", "fr": req.body.newExpression, "description": req.body.description };
 
   fs.readFile(JSON_FILE, function (err, data) {
     var json = JSON.parse(data)
@@ -67,9 +68,30 @@ app.post("/addExpression", (req, res) => {
   res.send("Expression ajoutée");
 });
 
-// define a word
-app.get("/definition", (req, res) => {
+// define a word in english
+app.get("/definition/fr", (req, res) => {
+  let data = fs.readFileSync(JSON_FILE);
+  let allWord = JSON.parse(data);
+  
+  allWord.forEach(currentWord => {
+    if (req.query.word === currentWord.fr) {
+      res.send(currentWord.en);
+    }
+  });
+  res.send("le mot n'est pas dans notre liste")
+});
 
+// define a word in french
+app.get("/definition/en", (req, res) => {
+  let data = fs.readFileSync(JSON_FILE);
+  let allWord = JSON.parse(data);
+  
+  allWord.forEach(currentWord => {
+    if (req.query.word === currentWord.en) {
+      res.send(currentWord.fr);
+    }
+  });
+  res.send("the word is'nt in our list")
 });
 
 app.listen(port, () => {
