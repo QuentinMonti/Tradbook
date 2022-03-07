@@ -6,7 +6,7 @@ export interface Props {}
 export const AddExpression: React.FunctionComponent<Props> = () => {
   return (
     <div>
-      <Nav></Nav>
+      <Nav name="Add new expression"></Nav>
       <div className="form-group container-md col-6">
         <form method="POST" action="http://localhost:8000/addExpression">
           <div className="field">

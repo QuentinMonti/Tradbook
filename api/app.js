@@ -1,12 +1,13 @@
-const { response } = require("express");
 const express  = require("express");
-const bodyParser = require("body-parser");
 const fs = require('fs');
 const app = express();
 const port = 8000;
 
 const JSON_FILE = './data/translations.json'
 const Word = require('./models/word')
+
+
+var axios = require("axios").default;
 
 app.use(
   express.urlencoded({
@@ -37,9 +38,18 @@ app.get("/getWords", (req, res) => {
 
 // add new expressions to a json file
 app.post("/addWord", (req, res) => {
-  let date = new Date()
-  let word = { "date": 1599552000, "en": "match", "fr": req.body.newWord, "description": req.body.description };
+  // let date = new Date()
+  let word = {};
 
+  switch (req.body.langue) {
+    case "fr":
+      word = { "date": 1599552000, "en": req.body.newWord, "fr": req.body.wordTranslate, "description": req.body.description };
+      break;
+    case "en":
+      word = { "date": 1599552000, "en": req.body.wordTranslate, "fr": req.body.newWord, "description": req.body.description };
+      break;
+  }
+ 
   fs.readFile(JSON_FILE, function (err, data) {
     var json = JSON.parse(data)
     json.push(word)
@@ -49,7 +59,7 @@ app.post("/addWord", (req, res) => {
     }); 
   })
 
-  res.send("Mot ajoutée");
+  // res.send("Mot ajoutée");
 });
 
 // add new expressions to a json file
@@ -92,6 +102,7 @@ app.get("/definition/en", (req, res) => {
     }
   });
   res.send("the word is'nt in our list")
+
 });
 
 app.listen(port, () => {

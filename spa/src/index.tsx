@@ -10,7 +10,10 @@ import Error404 from "./view/Error404";
 import "./index.css";
 import AddWord from "./view/addWord";
 import AddExpression from "./view/addExpression";
+// import { Login }  from "./view/Login/Login";
 import Login from "./view/Login";
+import ChooseLangage from "./view/ChooseLangage";
+import WordList from "./view/wordList";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -18,10 +21,13 @@ ReactDOM.render(
       <Router>
         <Switch>
           <Route exact path="/" component={Application} />
+          {/* <Route exact path="/login" component={Login} /> */}
           <Route exact path="/login" component={Login} />
           <Route exact path="/counter" component={Counter} />
           <Route exact path="/addWord" component={AddWord} />
           <Route exact path="/addExpression" component={AddExpression} />
+          <Route exact path="/chooseLangage" component={ChooseLangage} />
+          <Route exact path="/wordList" component={WordList} />
           <Route component={Error404} />
         </Switch>
       </Router>
